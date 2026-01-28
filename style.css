@@ -49,7 +49,7 @@ body {
 /* --- 妄想の吹き出し（フローティング） --- */
 #daydream-bubble {
     position: absolute;
-    top: 15%;        /* 上からの位置 */
+    top: 5%;        /* 上からの位置 */
     left: 50%;       /* 左右中央 */
     transform: translateX(-50%); /* 中央揃えの補正 */
     width: 800px;    /* ※吹き出しのサイズに合わせて調整 */
