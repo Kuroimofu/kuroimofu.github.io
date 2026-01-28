@@ -131,7 +131,7 @@ body {
         transform: translateX(-50%);
 
         /* PCでのサイズ感 */
-        width: 90%;        /* 画面の90%を使う（大迫力） */
+        width: 95%;        /* 画面の90%を使う（大迫力） */
         max-width: 1700px; /* ただし巨大すぎないように制限 */
         aspect-ratio: 16 / 9; /* 動画の比率を保つ */
         
