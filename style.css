@@ -45,7 +45,7 @@ body {
     position: absolute;
     bottom: 0;       /* 下にくっつける */
     right: 5%;       /* 右から5%の位置 */
-    width: 300px;    /* ※画像のサイズに合わせて調整してください */
+    width: 100px;    /* ※画像のサイズに合わせて調整してください */
     z-index: 10;     /* 背景より手前 */
     pointer-events: none; /* キャラをクリックしても裏の要素が反応するように */
 }
@@ -135,7 +135,7 @@ body {
         max-width: 1400px; /* ただし巨大すぎないように制限 */
         aspect-ratio: 16 / 9; /* 動画の比率を保つ */
         
-        /* ▼▼▼ 雲のマスク魔法（ここが重要！） ▼▼▼ */
+        /* ▼▼▼ 雲のマスク（ここが重要！） ▼▼▼ */
         -webkit-mask-image: url('assets/bubble_mask.png');
         mask-image: url('assets/bubble_mask.png');
         
