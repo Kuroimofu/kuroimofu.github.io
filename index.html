@@ -3,34 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuroimofu's Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>夜空ノオト</title>
+    <style>
+        /* --- ここからデザイン設定（CSS） --- */
+        body {
+            font-family: sans-serif; /* 文字のフォント */
+            background-color: #f4f4f4; /* 背景色 */
+            color: #333; /* 文字色 */
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* コンテンツを中央に寄せる枠 */
+        .container {
+            max-width: 800px; /* 横幅の最大値 */
+            margin: 0 auto; /* 中央揃え */
+            background-color: #fff; /* コンテンツ部分の背景色 */
+            padding: 30px;
+            border-radius: 10px; /* 角を丸くする */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* 影をつける */
+            text-align: center; /* 中身を中央揃え */
+        }
+
+        /* 画像の設定（スマホでもはみ出さないように） */
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        /* 音声プレーヤーの設定 */
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 15px;
+        }
+        /* --- デザイン設定ここまで --- */
+    </style>
 </head>
 <body>
 
-    <section id="hero">
-        <div id="hero-bg"></div>
+    <div class="container">
+        <h1>ここにページのタイトル</h1>
 
-        <div id="daydream-bubble" onclick="diveToWorld()">
-            <video autoplay loop muted playsinline>
-                <source src="assets/mofuopener.mp4" type="video/mp4">
-            </video>
-            <p class="click-hint">Click to Dive!</p>
-        </div>
+        <img src="sample.jpg" alt="画像の説明">
 
-        <div id="character">
-            <img src="assets/kuroimofu.png" alt="Kuroimofu">
-        </div>
-    </section>
-    <section id="main-content">
-        <div class="content-wrapper">
-            <h2>くろいもふのアニメ！創造セカイ</h2>
-            <p>動画コンテンツを置く所</p>
-            <br>
-            <p>ここにお散歩ロードを作る</p>
-        </div>
-    </section>
+        <p>
+            ここに説明文やメッセージを入れます。<br>
+            改行したい場合は br タグを使います。
+        </p>
 
-    <script src="main.js"></script>
+        <h3>音声を再生する</h3>
+        <audio controls>
+            <source src="sample.mp3" type="audio/mpeg">
+            お使いのブラウザは音声再生に対応していません。
+        </audio>
+    </div>
+
 </body>
 </html>
