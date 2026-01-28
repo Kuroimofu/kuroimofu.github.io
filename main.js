@@ -12,9 +12,9 @@ function setBackgroundByTime() {
     console.log("現在の時間は: " + hour + "時です");
 
     // 画像パスの設定（assetsフォルダの中身と名前を一致させる）
-    const morningImg = 'url("assets/bg_morning.jpg")';
-    const dayImg     = 'url("assets/bg_day.jpg")';
-    const nightImg   = 'url("assets/bg_night.jpg")';
+    const morningImg = 'url("assets/bg_morning.png")';
+    const dayImg     = 'url("assets/bg_day.png")';
+    const nightImg   = 'url("assets/bg_night.png")';
 
     // 時間割り当てロジック
     if (hour >= 5 && hour < 10) {
