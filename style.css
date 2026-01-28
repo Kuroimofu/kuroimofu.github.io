@@ -32,7 +32,7 @@ body {
     z-index: 1; /* 一番後ろ */
 }
 
-/* --- くろいもふ（キャラクター） --- */
+/* --- くろいもふ --- */
 #character {
     position: absolute;
     bottom: 0;       /* 下にくっつける */
@@ -60,10 +60,32 @@ body {
     animation: floatBubble 6s ease-in-out infinite;
 }
 
-#daydream-bubble img {
+/*　#daydream-bubble img {
     width: 100%;
     height: auto;
 }
+/*
+
+/* --- 動画用の設定を追加 --- */
+#daydream-bubble video {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* 動画を枠いっぱいに広げる */
+
+    /* マスクの設定（雲の形で切り抜く魔法） */
+    -webkit-mask-image: url('assets/bubble_mask.png');
+    mask-image: url('assets/bubble_mask.png');
+    
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
 
 /* フワフワ動くアニメーションの定義 */
 @keyframes floatBubble {
