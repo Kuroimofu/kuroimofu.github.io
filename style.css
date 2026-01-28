@@ -1,0 +1,97 @@
+/* --- リセット設定（おまじない） --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
+    overflow-x: hidden; /* 横スクロール禁止 */
+    background-color: #000;
+}
+
+/* --- ヒーローセクション（全画面表示） --- */
+#hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 画面の高さいっぱいにする */
+    overflow: hidden;
+}
+
+/* --- 背景画像の制御 --- */
+#hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* 画面いっぱいに引き伸ばす */
+    background-position: center;
+    transition: background-image 1s ease; /* 1秒かけてじわっと切り替わる */
+    z-index: 1; /* 一番後ろ */
+}
+
+/* --- くろいもふ（キャラクター） --- */
+#character {
+    position: absolute;
+    bottom: 0;       /* 下にくっつける */
+    right: 10%;      /* 右から10%の位置（好みで調整可） */
+    width: 300px;    /* ※画像のサイズに合わせて調整してください */
+    z-index: 10;
+}
+#character img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 妄想の吹き出し（フローティング） --- */
+#daydream-bubble {
+    position: absolute;
+    top: 15%;        /* 上からの位置 */
+    left: 50%;       /* 左右中央 */
+    transform: translateX(-50%); /* 中央揃えの補正 */
+    width: 400px;    /* ※吹き出しのサイズに合わせて調整 */
+    cursor: pointer; /* マウスを乗せると指マークに */
+    z-index: 20;     /* キャラの奥か手前かはここで調整（数字が大きいと手前） */
+    
+    /* フワフワ動くアニメーションを適用 */
+    animation: floatBubble 6s ease-in-out infinite;
+}
+
+#daydream-bubble img {
+    width: 100%;
+    height: auto;
+}
+
+/* フワフワ動くアニメーションの定義 */
+@keyframes floatBubble {
+    0%   { transform: translateX(-50%) translateY(0px); }
+    50%  { transform: translateX(-50%) translateY(-20px); } /* 20px上に浮く */
+    100% { transform: translateX(-50%) translateY(0px); }
+}
+
+/* Click to Dive! の文字 */
+.click-hint {
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0,0,0,0.8);
+    opacity: 0.8;
+}
+
+
+/* --- メインコンテンツ（遷移先） --- */
+#main-content {
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
