@@ -124,7 +124,7 @@ body {
 @media screen and (min-width: 1300px) {
     #daydream-bubble {
         /* 画面中央、少し上寄り */
-        top: 10%;
+        top: 3%;
         left: 50%;
         
         /* 中央揃えの補正 */
