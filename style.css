@@ -1,4 +1,8 @@
-/* --- リセット設定（おまじない） --- */
+@charset "UTF-8";
+
+/* =========================================
+   1. 基本設定（リセット）
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +12,12 @@
 body {
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
     overflow-x: hidden; /* 横スクロール禁止 */
-    background-color: #000;
+    background-color: #000; /* 基本背景色（黒） */
 }
 
-/* --- ヒーローセクション（全画面表示） --- */
+/* =========================================
+   2. ヒーローセクション（全画面表示）
+   ========================================= */
 #hero {
     position: relative;
     width: 100%;
@@ -19,7 +25,7 @@ body {
     overflow: hidden;
 }
 
-/* --- 背景画像の制御 --- */
+/* 背景画像エリア */
 #hero-bg {
     position: absolute;
     top: 0;
@@ -32,82 +38,136 @@ body {
     z-index: 1; /* 一番後ろ */
 }
 
-/* --- くろいもふ --- */
+/* =========================================
+   3. くろいもふ（キャラクター）
+   ========================================= */
 #character {
     position: absolute;
     bottom: 0;       /* 下にくっつける */
-    right: 10%;      /* 右から10%の位置（好みで調整可） */
+    right: 5%;       /* 右から5%の位置 */
     width: 300px;    /* ※画像のサイズに合わせて調整してください */
-    z-index: 10;
+    z-index: 10;     /* 背景より手前 */
+    pointer-events: none; /* キャラをクリックしても裏の要素が反応するように */
 }
+
 #character img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* --- 妄想の吹き出し（フローティング） --- */
+/* =========================================
+   4. 妄想バブル（動画エリア）共通設定
+   ========================================= */
 #daydream-bubble {
     position: absolute;
-    top: 5%;        /* 上からの位置 */
-    left: 50%;       /* 左右中央 */
-    transform: translateX(-50%); /* 中央揃えの補正 */
-    width: 800px;    /* ※吹き出しのサイズに合わせて調整 */
-    cursor: pointer; /* マウスを乗せると指マークに */
-    z-index: 20;     /* キャラの奥か手前かはここで調整（数字が大きいと手前） */
-    
-    /* フワフワ動くアニメーションを適用 */
-    animation: floatBubble 6s ease-in-out infinite;
+    z-index: 20;     /* キャラよりさらに手前 */
+    cursor: pointer; /* クリックできるよマーク */
+    overflow: hidden;
 }
 
-/*　#daydream-bubble img {
-    width: 100%;
-    height: auto;
-}
-/*
-
-/* --- 動画用の設定を追加 --- */
 #daydream-bubble video {
     width: 100%;
-    height: auto;
-    object-fit: cover; /* 動画を枠いっぱいに広げる */
-
-    /* マスクの設定（雲の形で切り抜く魔法） */
-    -webkit-mask-image: url('assets/bubble_mask.png');
-    mask-image: url('assets/bubble_mask.png');
-    
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    
-    -webkit-mask-position: center;
-    mask-position: center;
+    height: 100%;
+    object-fit: cover; /* 枠いっぱいに動画を広げる */
 }
 
+/* Click to Dive! の文字設定 */
+.click-hint {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8); /* 文字が見やすいように影をつける */
+    opacity: 0.9;
+    pointer-events: none; /* 文字自体がクリックを邪魔しないように */
+}
 
-/* フワフワ動くアニメーションの定義 */
+/* =========================================
+   📱 スマホ向けのスタイル (画面幅 768px 以下)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    #daydream-bubble {
+        /* スマホでは画面全体をジャックする */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* 画面の高さ100% */
+        transform: none;
+        
+        /* 雲のマスクを解除（四角い全画面動画にする） */
+        -webkit-mask-image: none;
+        mask-image: none;
+        
+        /* 酔い防止のためアニメーションはオフ */
+        animation: none;
+    }
+    
+    /* 文字の位置調整 */
+    .click-hint {
+        bottom: 120px; /* 下のバーなどに被らないよう高めに */
+        font-size: 1.2rem;
+    }
+
+    /* スマホではキャラを少し小さく、あるいは隠してもOK */
+    #character {
+        width: 180px;
+        right: -20px; /* 少し画面外にはみ出させる等の演出 */
+    }
+}
+
+/* =========================================
+   💻 PC向けのスタイル (画面幅 769px 以上)
+   ========================================= */
+@media screen and (min-width: 769px) {
+    #daydream-bubble {
+        /* 画面中央、少し上寄り */
+        top: 10%;
+        left: 50%;
+        
+        /* 中央揃えの補正 */
+        transform: translateX(-50%);
+
+        /* PCでのサイズ感 */
+        width: 90%;        /* 画面の90%を使う（大迫力） */
+        max-width: 1400px; /* ただし巨大すぎないように制限 */
+        aspect-ratio: 16 / 9; /* 動画の比率を保つ */
+        
+        /* ▼▼▼ 雲のマスク魔法（ここが重要！） ▼▼▼ */
+        -webkit-mask-image: url('assets/bubble_mask.png');
+        mask-image: url('assets/bubble_mask.png');
+        
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        
+        -webkit-mask-position: center;
+        mask-position: center;
+        
+        /* フワフワ動くアニメーション */
+        animation: floatBubble 6s ease-in-out infinite;
+    }
+    
+    .click-hint {
+        bottom: 10%; /* 動画の下の方に配置 */
+        font-size: 1.5rem;
+    }
+}
+
+/* PC用のフワフワアニメーション定義 */
 @keyframes floatBubble {
     0%   { transform: translateX(-50%) translateY(0px); }
     50%  { transform: translateX(-50%) translateY(-20px); } /* 20px上に浮く */
     100% { transform: translateX(-50%) translateY(0px); }
 }
 
-/* Click to Dive! の文字 */
-.click-hint {
-    position: absolute;
-    bottom: -30px;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(0,0,0,0.8);
-    opacity: 0.8;
-}
-
-
-/* --- メインコンテンツ（遷移先） --- */
+/* =========================================
+   5. メインコンテンツ（おさんぽエリアの準備）
+   ========================================= */
 #main-content {
     min-height: 100vh;
     background-color: #1a1a1a;
