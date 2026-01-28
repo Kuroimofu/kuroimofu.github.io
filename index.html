@@ -3,49 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>遺作</title>
+    <title>Webページのタイトル</title>
     <style>
-        /* --- ここからデザイン設定（CSS） --- */
         body {
-            font-family: sans-serif; /* 文字のフォント */
-            background-color: #f4f4f4; /* 背景色 */
-            color: #333; /* 文字色 */
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
             margin: 0;
             padding: 20px;
             line-height: 1.6;
         }
-
-        /* コンテンツを中央に寄せる枠 */
         .container {
-            max-width: 800px; /* 横幅の最大値 */
-            margin: 0 auto; /* 中央揃え */
-            background-color: #fff; /* コンテンツ部分の背景色 */
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
             padding: 30px;
-            border-radius: 10px; /* 角を丸くする */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* 影をつける */
-            text-align: center; /* 中身を中央揃え */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
         }
-
-        /* 画像の設定（スマホでもはみ出さないように） */
         img {
             max-width: 100%;
             height: auto;
             margin-bottom: 20px;
             border-radius: 5px;
         }
-
-        /* 音声プレーヤーの設定 */
         audio {
             width: 100%;
             max-width: 500px;
             margin-top: 15px;
         }
 
-        /* これを追加すると、コード内の改行がそのまま画面に出ます */
-p {
-    white-space: pre-wrap;
-}
-        /* --- デザイン設定ここまで --- */
+        /* ★★★ ここが重要な変更点です ★★★ */
+        /* pタグの中にある改行を、そのまま画面に反映させる設定 */
+        p {
+            white-space: pre-line; 
+            text-align: left; /* 文章は左揃えの方が見やすい場合が多いです */
+        }
+        /* ★★★★★★★★★★★★★★★★★★★ */
+
     </style>
 </head>
 <body>
